@@ -1,0 +1,17 @@
+1. Copy BRAmaRecipes to <mission>\ExAdClient\XM8\Apps
+2. Add the following to CfgXM8 that was defined for ExAd:
+
+	class BRAmaRecipes 
+	{
+		controlID = 107000;
+		title = "Recipies";		
+		logo = "ExAdClient\XM8\Apps\BRAmaRecipes\BRAma.paa";
+		config = "ExAdClient\XM8\Apps\BRAmaRecipes\config.sqf";
+		onLoad = "ExAdClient\XM8\Apps\BRAmaRecipes\onLoad.sqf";
+		onOpen = "ExAdClient\XM8\Apps\BRAmaRecipes\onOpen.sqf";
+	};
+
+3. Add "BRAmaRecipes" to the extraApps[] array defined in CfgXM8 
+4. If you put the BRAmaRecipes in a different folder than specified in #1, change the variable BRAmaRecipesPath in config.sqf to point to the location you chose, follow the example alread at the top of that file.
+
+If you have installed ExAd properly, this will work out of the box.
