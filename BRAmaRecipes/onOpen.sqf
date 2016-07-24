@@ -215,28 +215,3 @@ fnc_components_Load = {
 	} forEach _returnedItems; 
 
 };
-
-private["_display","_locations","_locationlist","_infos","_infolist"];
-disableSerialization;
-if (DZ_dpmenu_debug) then {diag_log "ExileClient_gui_xm8_slide_BRAmaRecipes_onOpen executing...";};
-_display = uiNameSpace getVariable ["RscExileXM8", displayNull];
-_RecipeCategories = [];
-
-for '_j' from 0 to (count (missionConfigFile >> "CfgCraftingRecipes"))-1 do
-{
-	_CategoryConfig = (missionConfigFile >> "CfgCraftingRecipes") select _j;
-	
-	_RecipeCategory = getText(_CategoryConfig >> "category");	
-
-	if!(_RecipeCategory in _RecipeCategories)then{_RecipeCategories pushBack _RecipeCategory;};		
-	_RecipeCategory = "Uncategorised";
-	if!(_RecipeCategory in _RecipeCategories)then{_RecipeCategories pushBack _RecipeCategory;};
-
-};
-
-{
- (_display displayCtrl 85505) lbAdd Format["%1",_x];
- (_display displayCtrl 85505) lbSetData [_forEachIndex,_x];	
-} foreach _RecipeCategories;
-
-lbSort (_display displayCtrl 85505);
